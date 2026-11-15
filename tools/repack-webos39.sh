@@ -110,7 +110,7 @@ SHIM_EOF
 "$NDK/bin/arm-webos-linux-gnueabi-gcc" -shared -fPIC -O2 -g0 -Wall -Wextra -Werror -std=gnu11 \
     -fvisibility=hidden -Wl,-soname,libwpeb-owner.so -Wl,--no-undefined -Wl,--as-needed \
     -I"$OUT_BE" -I"$SRC" -o "$APP_DIR/engine/lib/libwpeb-owner.so" \
-    "$SRC/owner.c" "$OUT_BE/webos-surface-group-protocol.c" "$OUT_BE/wayland_shim.c" -lwayland-client
+    "$SRC/owner.c" "$OUT_BE/webos-surface-group-protocol.c" "$OUT_BE/wayland_shim.c" -lwayland-client -ldl
 
 "$NDK/bin/arm-webos-linux-gnueabi-gcc" -shared -fPIC -O2 -g0 -Wall -Wextra -Werror -std=gnu11 \
     -fvisibility=hidden -Wl,-soname,libWPEBackend-webos.so -Wl,--no-undefined -Wl,--as-needed \
