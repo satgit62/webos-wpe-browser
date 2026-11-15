@@ -122,6 +122,9 @@ SHIM_EOF
 
 "$NDK/bin/arm-webos-linux-gnueabi-strip" --strip-unneeded "$APP_DIR/engine/lib/libwpeb-owner.so" "$APP_DIR/engine/lib/libWPEBackend-webos.so"
 
+echo "== 5b. appinfo.json für webOS 3.x Launcher-Icons anpassen =="
+python3 -c 'import json; p="'"$APP_DIR"'/appinfo.json"; d=json.load(open(p)); d["iconColor"]="#000000"; d["supportGIP"]=True; json.dump(d,open(p,"w"),indent=4)'
+
 echo "== 6. Neues webOS-3.9-IPK packen =="
 mkdir -p "$WORK/pkg/control"
 SIZE=$(du -sk "$WORK/root" | cut -f1)
