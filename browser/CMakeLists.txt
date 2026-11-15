@@ -54,7 +54,8 @@ wnk_add_webos_package(
         VENDOR "sostk"
         ICON "${CMAKE_CURRENT_SOURCE_DIR}/icon.png"
         LARGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}/largeIcon.png"
-        ICON_COLOR "#0b1020"
+        ICON_COLOR "#000000"
+        SUPPORT_GIP
         EXPECTED_NEEDED "${CMAKE_CURRENT_SOURCE_DIR}/expected-needed.txt"
         EXTRA_DIRS "${WNK_FONT_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/fonts" "${CMAKE_CURRENT_SOURCE_DIR}/icons"
         GLIBC_RUNTIMES ${WPEB_ENGINE_EXTRA_DIR}

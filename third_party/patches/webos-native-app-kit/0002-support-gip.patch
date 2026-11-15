@@ -1,0 +1,20 @@
+diff --git a/cmake/WebOSPackage.cmake b/cmake/WebOSPackage.cmake
+index a1a2fda..8511e65 100644
+--- a/cmake/WebOSPackage.cmake
++++ b/cmake/WebOSPackage.cmake
+@@ -79,11 +79,14 @@ function(wnk_add_webos_package)
+     set(APPINFO_TITLE "${P_TITLE}")
+     set(APPINFO_ICON_COLOR "${P_ICON_COLOR}")
+     set(APPINFO_EXTRA "")
++    if (PKG_SUPPORT_GIP)
++        string(APPEND APPINFO_EXTRA ",\n    \"supportGIP\": true")
++    endif ()
+     if (P_REQUIRED_PERMISSIONS)
+         list(TRANSFORM P_REQUIRED_PERMISSIONS PREPEND "\"" OUTPUT_VARIABLE _perms)
+         list(TRANSFORM _perms APPEND "\"")
+         list(JOIN _perms ", " _perms)
+-        set(APPINFO_EXTRA ",\n    \"requiredPermissions\": [${_perms}]")
++        string(APPEND APPINFO_EXTRA ",\n    \"requiredPermissions\": [${_perms}]")
+     endif ()
+     configure_file("${WNK_PACKAGE_MODULE_DIR}/appinfo.json.in" "${_appinfo}.in" @ONLY)
+     file(GENERATE OUTPUT "${_appinfo}" INPUT "${_appinfo}.in"
